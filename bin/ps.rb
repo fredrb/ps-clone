@@ -1,7 +1,11 @@
-require_relative '../lib/SystemProc.rb'
+require_relative '../lib/ProcList.rb'
 require_relative '../lib/ProcFileSystem.rb'
 
-proc = SystemProc::create("3201", ProcFileSystem)
+processes = ProcList.new ProcFileSystem
 
-puts proc.pid
-puts proc.name
+puts "PID\tNAME"
+processes.for_each_proc { |p|
+  puts "#{p.pid}\t#{p.name}"
+}
+
+
