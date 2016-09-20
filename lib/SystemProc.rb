@@ -1,11 +1,8 @@
 class SystemProc
 
-  def self.create pid
-   file = File.open("/proc/#{pid}/stat") 
-   data = file.read.strip.split(" ")
+  def self.create pid, filesystem
+   data = filesystem::get_stat_data_for_pid pid
    proc = self.new(data[0], data[1])
-
-   file.close
    return proc
   end
 
