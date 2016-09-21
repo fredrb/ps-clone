@@ -1,11 +1,12 @@
 require_relative '../lib/ProcList.rb'
 require_relative '../lib/ProcFileSystem.rb'
+require_relative '../lib/UserMap.rb'
 
-processes = ProcList.new ProcFileSystem
+processes = ProcList.new ProcFileSystem, UserMap
 
-puts "PID\tNAME"
+format="%6s\t%-15s\t%-15s\n"
+printf(format, "PID", "NAME", "USER")
+printf(format, "------", "---------------", "---------------")
 processes.for_each_proc { |p|
-  puts "#{p.pid}\t#{p.name}"
+  printf(format, p.pid, p.name, p.user)
 }
-
-

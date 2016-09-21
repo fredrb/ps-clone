@@ -14,11 +14,23 @@ class ProcFileSystem
     return pids
   end
 
-  def self.get_stat_data_for_pid pid
-    file = File.open("/proc/#{pid}/stat") 
+  def self.get_proc_name pid
+    file = File.open("/proc/#{pid}/stat")
     content = file.read
     file.close
-    return content.strip.split(" ")
+    return content.strip.split(" ")[1]
+  end
+
+  def self.get_uid id
+    File.open("/proc/#{id}/status") { |f|
+      while line = f.readline
+        data = line.strip.split("\t")
+        if data[0] == "Uid:"
+          return [data[1], data[2], data[3], data[4]]
+        end
+      end
+    }
+    return nil
   end
 
 end
