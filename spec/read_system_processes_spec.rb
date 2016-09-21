@@ -20,6 +20,10 @@ class FakeFS
       "1000" => "user1"
     }
   end
+
+  def self.get_command pid
+    return "/usr/bin/hello_program --args --something"
+  end
 end
 
 RSpec.describe ProcessFactory, '#Lising' do
@@ -34,6 +38,7 @@ RSpec.describe ProcessFactory, '#Lising' do
         expect(p.name).not_to be_nil
         expect(p.pid).not_to be_nil
         expect(p.user).not_to be_nil
+        expect(p.command).not_to be_nul
         loop_count = loop_count + 1
       }
       expect(loop_count).to eq(3)

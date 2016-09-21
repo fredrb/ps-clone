@@ -44,4 +44,11 @@ class FilesystemAdapter
     }
     return users
   end
+
+  def self.get_command pid
+    file = File.open("/proc/#{pid}/cmdline")
+    cmdline = file.read.strip.slice(0, 30)
+    file.close
+    return cmdline
+  end
 end

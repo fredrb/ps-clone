@@ -22,9 +22,12 @@ class ProcessFactory
 
     name = data["name:"][0]
     user_id = data["uid:"][0]
-    user = @fs::get_users[user_id]
+    state = data["state:"][0]
 
-    return ProcessData.new(pid, name, user)
+    user = @fs::get_users[user_id]
+    command = @fs::get_command(pid)
+
+    return ProcessData.new(pid, name, user, state, command)
   end
 
 end
