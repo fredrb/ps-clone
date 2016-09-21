@@ -24,10 +24,14 @@ class ProcessFactory
     user_id = data["uid:"][0]
     state = data["state:"][0]
 
+    if data["vmrss:"] != nil
+      rss = data["vmrss:"][0]
+    end
+
     user = @fs::get_users[user_id]
     command = @fs::get_command(pid)
 
-    return ProcessData.new(pid, name, user, state, command)
+    return ProcessData.new(pid, name, user, state, command, rss)
   end
 
 end

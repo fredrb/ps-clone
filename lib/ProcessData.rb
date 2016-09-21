@@ -5,13 +5,15 @@ class ProcessData
   attr_reader :user
   attr_reader :state
   attr_reader :command
+  attr_reader :rss
 
-  def initialize pid, name, user, state, command
+  def initialize pid, name, user, state, command, rss
     @pid = pid
     @name = parse_name name
     @user = user
     @state = state
     @command = command
+    @rss = rss
   end
 
   private
