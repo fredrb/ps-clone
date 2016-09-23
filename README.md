@@ -17,3 +17,7 @@ A clone of unix ps program - reports a snapshot of the current processes; includ
 ## Run
 Executable is `bin/ps.rb`
 
+## Proc Filesystem
+
+All processes are read from Linux `/proc` folder. Every Pid subfolder contains data for each running process, general data can be found in file `/proc/<pid>/status`
+
