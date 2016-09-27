@@ -12,7 +12,7 @@ A clone of unix ps program - reports a snapshot of the current processes; includ
 ```
 
 ## Install
-`gem install`
+`bundle install`
 
 ## Run
 Executable is `bin/ps.rb`
